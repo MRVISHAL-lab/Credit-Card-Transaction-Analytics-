@@ -1,89 +1,117 @@
-# Credit Card Transaction Analytics
+# Credit Card Transaction Analysis – EDA
 
-An end-to-end data analytics project focused on analyzing customer behaviour, card usage, transaction patterns, and fraud risk.
+Exploratory Data Analysis of credit card transaction data to understand customer demographics, card characteristics, merchant patterns, transaction behaviour, and fraud-related patterns.
 
-## Project Overview
+## Dataset
 
-The objective of this project is to analyze credit card transactions and identify patterns related to customer spending, card usage, transaction risk, and fraudulent activities.
+The analysis uses four datasets:
 
-The project uses four datasets:
+* **Customer:** 25,000 records, 12 columns
+* **Cards:** 32,457 records, 10 columns
+* **Transaction:** 250,000 records, 20 columns
+* **Merchant:** 500 records, 9 columns
 
-| Dataset     | Records |
-| ----------- | ------: |
-| Customer    |  25,000 |
-| Card        |  32,457 |
-| Transaction | 250,000 |
-| Merchant    |     500 |
+## EDA Process
 
-## Business Problem
+### 1. Data Quality Assessment
 
-Fraudulent transactions can lead to financial losses, chargebacks, and reduced customer trust. The analysis focuses on identifying fraud hotspots, risky transaction channels, anomalous behaviour, and other factors associated with fraudulent transactions.
-
-## Analysis Performed
-
-* Data Quality Assessment
-* Exploratory Data Analysis (EDA)
-* Customer Segmentation & Spending Analysis
-* Card Portfolio Analysis
-* Fraud Detection & Risk Analysis
-* Correlation & Relationship Analysis
-* Financial & Operational Analysis
-* Business Recommendations
-
-## Key Findings
-
-* Fraud accounted for **5.39% of transactions** but represented **25.3% of total transaction value**.
-* Average fraud transaction value was approximately **4.7× higher** than the overall average transaction value.
-* POS transactions generated approximately **₹797M in fraud losses**.
-* Expired, blocked, and lost cards accounted for a significant proportion of fraud incidents.
-* Fraud losses showed a noticeable increase between **March and June**.
-
-## Data Quality
-
-The datasets were checked for:
-
+* Dataset structure and dimensions
+* Data types
 * Missing values
 * Duplicate records
-* Data types
-* Statistical outliers
+* Outlier investigation
+* Date conversion
 
-Date columns were converted from string format to datetime. High-value transactions above ₹1,000,000 were retained because they were associated with fraudulent transactions and were considered valid business observations.
+### 2. Univariate Analysis
 
-## Tools & Technologies
+Analysis of individual variables using:
+
+* Histograms
+* Count plots
+* Distribution plots
+
+Variables analyzed include age, annual income, credit limit, transaction amount, payment method, fraud flag, card type, card network, merchant category, and merchant risk level.
+
+### 3. Bivariate Analysis
+
+Relationships between two variables using:
+
+* Scatter plots
+* Box plots
+
+Examples:
+
+* Age vs Annual Income
+* Credit Limit vs Transaction Amount
+* Card Type vs Credit Limit
+* Payment Method vs Transaction Amount
+* Merchant Category vs Transaction Amount
+* Fraud Flag vs Transaction Amount
+
+### 4. Categorical vs Categorical Analysis
+
+Used cross-tabulation and heatmaps to analyze relationships such as:
+
+* Card Type vs Payment Method
+* Customer Segment vs Fraud Flag
+* Merchant Category vs Fraud Flag
+
+### 5. Multivariate Analysis
+
+Analyzed multiple variables simultaneously using visualizations such as:
+
+* Age vs Transaction Amount by Fraud Flag
+* Annual Income vs Transaction Amount by Customer Segment
+* Credit Limit vs Transaction Amount by Card Type
+* Merchant Category vs Transaction Amount by Fraud Flag
+
+### 6. Correlation Analysis
+
+The correlation matrix includes:
+
+* Age
+* Annual Income
+* Credit Limit
+* Transaction Amount
+* Merchant Rating
+* Fraud Flag
+* Is International
+
+The strongest observed relationships include:
+
+* Annual Income & Credit Limit: **0.43**
+* Transaction Amount & Fraud Flag: **0.27**
+* Age & Annual Income: **0.23**
+
+## Data Integration
+
+The four datasets were merged using common identifiers to create a final analytical dataset containing **250,000 rows and 47 columns**. Duplicate columns created during merging were reviewed and unnecessary columns were removed.
+
+## Tools & Libraries
 
 * Python
 * Pandas
 * NumPy
 * Matplotlib
 * Seaborn
-* SQL
-* Power BI
-* Excel
 
-## Repository Structure
+## Project Structure
 
 ```text
-Credit-Card-Transaction-Analytics/
+Credit-Card-Transaction-Analysis/
 │
 ├── README.md
 ├── EDA/
-│   ├── EDA_Notebook.ipynb
-│   └── EDA_Report.pdf
+│   └── Credit_card_transaction_analysis.pdf
 │
-├── SQL/
-│   └── SQL_Analysis.sql
+├── Notebook/
+│   └── Credit_card_transaction_analysis.ipynb
 │
-├── PowerBI/
-│   └── Credit_Card_Analysis.pbix
-│
-└── Dashboard/
-    └── Dashboard_Screenshots/
+└── Dataset/
+    └── README.md
 ```
 
-## Business Recommendations
+## Report
 
-The analysis recommends stronger real-time card-status validation, additional security for high-risk channels, high-value transaction monitoring, and increased fraud monitoring during periods of higher fraud activity.
+The complete **62-page EDA report** contains the Python code, data quality checks, statistical analysis, visualizations, relationship analysis, and correlation analysis.
 
-## Detailed Report
-
-The complete **62-page EDA report** contains the detailed analysis, visualizations, statistical findings, insights, and recommendations.
